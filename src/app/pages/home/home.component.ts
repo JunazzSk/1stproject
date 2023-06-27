@@ -1,5 +1,5 @@
-import { TmplAstRecursiveVisitor } from '@angular/compiler';
 import { Component } from '@angular/core';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-home',
@@ -8,48 +8,31 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  public productdetails: any;
+  public productDetail:any;
+  public products:any;
+ public cartproducts = [];
+ public cartItems;
 
-  public getproductdetail(product:any){
-    console.log(product);
-    this.productdetails= product;
+
+  constructor( public apiservice:ApiService){
+    this.apiservice.getproducts().then((productResponse)=>{
+      this.products = productResponse;
+      console.log(productResponse);
+    })
   }
 
-public products= [
-  {
-    id: 1,
-    name: 'product 1',
-    price: '100',
-    description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
-    imgUrl:'assets/images/home/cart img.jpeg'
-  },
-  {
-    id: 2,
-    name: 'product 2',
-    price: '200',
-    description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
-    imgUrl:'assets/images/home/cart img.jpeg'
-  },
-  {
-    id: 3,
-    name: 'product 3',
-    price: '300',
-    description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
-    imgUrl:'assets/images/home/cart img.jpeg'
-  },
-  {
-    id: 4,
-    name: 'product 4',
-    price: '400',
-    description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
-    imgUrl:'assets/images/home/cart img.jpeg'
-  },
-  {
-    id: 5,
-    name: 'product 5',
-    price: '500',
-    description: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
-    imgUrl:'assets/images/home/cart img.jpeg'
-   },
-]
+
+  public getProductDetail(product:any){
+
+    // console.log(product);
+    this.productDetail= product;
+
+  }
+  public addtocart(cartproduct) {
+    this.cartproducts.push(cartproduct);
+    localStorage.setItem('cartproducts', JSON.stringify(this.cartproducts));
+    let getproducts = JSON.parse(localStorage.getItem('cartproducts'));
+    console.log(getproducts);
+    this.cartItems=getproducts;
+  }
 }

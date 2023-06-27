@@ -1,0 +1,39 @@
+{
+    "data":[
+        {
+            "id":1,
+            "name":"product 1",
+            "price":"₹1200000",
+            "description":"A beautiful Jacket in leather, by BuyIt.com. This premium jacket is not for soft hearted.",
+            "url":"../../../assets/images/home/placeimg_640_480_any.jpg"
+        },
+        {
+            "id":2,
+            "name":"product 2",
+            "price":"₹1200001",
+            "description":"A beautiful Jacket in leather, by BuyIt.com. This premium jacket is not for soft hearted.",
+            "url":"../../../assets/images/home/placeimg_640_480_any.jpg"
+        },
+        {
+            "id":3,
+            "name":"product 3",
+            "price":"₹1200002",
+            "description":"A beautiful Jacket in leather, by BuyIt.com. This premium jacket is not for soft hearted.",
+            "url":"../../../assets/images/home/placeimg_640_480_any.jpg"
+        },
+        {
+            "id":4,
+            "name":"product 4",
+            "price":"₹1200003",
+            "description":"A beautiful Jacket in leather, by BuyIt.com. This premium jacket is not for soft hearted.",
+            "url":"../../../assets/images/home/placeimg_640_480_any.jpg"
+        },
+        {
+            "id":5,
+            "name":"product 5",
+            "price":"₹1200004",
+            "description":"A beautiful Jacket in leather, by BuyIt.com. This premium jacket is not for soft hearted.",
+            "url":"../../../assets/images/home/placeimg_640_480_any.jpg"
+        }
+    ]
+}

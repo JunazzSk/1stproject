@@ -1,52 +1,62 @@
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 <div class="container">
-<div class="product">
-  <div class="card" style="width: 20rem" *ngFor="let product of products">
-    <img [src]="product.imgUrl" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{product.name}}</h5>
-      <p class="card-text">₹{{product.price}}</p>
-      <a href="#" class="btn btn-primary">add to cart</a>
-      <a href="#" class="btn btn-primary ms-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getproductdetail(product)">product details</a>
-    </div>
-  </div>
-</div>
-</div>
-<!-- product model -->
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">product details</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card mb-3" style="max-width: 540px" *ngIf="productdetails">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="assets\images\home\cart img.jpeg" class="img-fluid rounded-start" alt="...">
+    <div class="product">
+        <div class="card" style="width: 18rem;" *ngFor="let product of products">
+            <img [src]="'assets/images/home/placeimg_640_480_any.jpg'" class="card-img-top" alt="Lady in Red">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.price}}</p>
+              <button class="btn btn-primary"(click)="addtocart(product)">Add to cart</button>
+              <a href="#" class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getProductDetail(product)">Product Details</a>
             </div>
-            <div class="col-md-8">-
-              <div class="card-body">
-                <h5 class="card-title">{{productdetails.name}} </h5>
-                <p class="card-text">₹{{productdetails.price}}</p>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+    </div>
 
-                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-              </div>
+</div>
+<!-- product detail modal start -->
+      <!-- Button trigger modal -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Product Details</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card mb-3" style="max-width: 540px;" *ngIf="productDetail">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="../../../assets/images/home/placeimg_640_480_any.jpg" class="img-fluid rounded-start" alt="Lady in Jacket" style="height: 100%;">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{productDetail.name}}</h5>
+                          <p class="price">{{productDetail.price}}</p>
+                          <p class="card-text">{{productDetail.description}}</p>
+                          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="addtocart(productDetail)"><svg xmlns="http://www.w3.org/2000/svg"  height="20px" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16" >
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+               </svg>Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add to cart</button>
-      </div>
-    </div>
-  </div>
-</div>
+</body>
+</html>
