@@ -8,30 +8,30 @@ import { Component, OnInit } from '@angular/core';
 export class CartComponent implements OnInit {
   items: any[];
 
-  constructor() {
-  }
-
   ngOnInit(): void {
-    const savedItems = JSON.parse(localStorage.getItem('cartproducts'));
-  console.log('cart',savedItems);
+    this.getItemsFromLocalStorage();
+  }
+
+  getItemsFromLocalStorage(): void {
+    const savedItems = JSON.parse(localStorage.getItem('cartproducts')) || [];
+    console.log('cart', savedItems);
     this.items = savedItems;
-
   }
 
-  // addItemToCart(item: any): void {
-  //   localStorage.setItem('cartItems', JSON.stringify(this.items));
-  // }
-
-  removeItemFromCart(product): void {
-   this.items.splice(this.items.indexOf(product), 1);
-
+  removeItemFromCart(item: any): void {
+    const index = this.items.indexOf(item);
+    if (index > -1) {
+      this.items.splice(index, 1);
+      this.updateLocalStorage();
+    }
   }
 
-  clearCart() {
-    localStorage.clear();
-    this.items = JSON.parse(localStorage.getItem('cartproducts'))
+  clearCart(): void {
+    localStorage.removeItem('cartproducts');
+    this.items = [];
+  }
 
+  updateLocalStorage(): void {
+    localStorage.setItem('cartproducts', JSON.stringify(this.items));
   }
 }
-
-
